@@ -20,7 +20,6 @@ export async function handleApiCall<T>(arg: {
   arg.ref.value = {
     state: ResponseState.LOADING
   }
-
   await arg
     .apiCall()
     .then((response) => {

@@ -10,7 +10,7 @@ const viewModel = new MainViewModel();
     <div class="container">
       <a>Header</a>
       <button @click="viewModel.increment">Count is: {{ viewModel.count }}</button>
-      <button @click="viewModel.getWeaponList">Count is: {{ viewModel.weaponList }}</button>
+      <button @click="viewModel.getWeaponList">Weapon list: <br>{{ viewModel.weaponList }}</button>
     </div>
   </div>
 </template>
@@ -21,9 +21,18 @@ a {
   user-select: none;
 }
 
+button {
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  border: 2px solid gray;
+  padding: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 .screen {
   display: flex;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -33,5 +42,9 @@ a {
   flex-grow: 1;
   align-items: center;
   justify-content: center;
+
+  &>* {
+    margin: 8px 0;
+  }
 }
 </style>
