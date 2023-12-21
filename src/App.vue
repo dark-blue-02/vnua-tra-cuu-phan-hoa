@@ -18,15 +18,9 @@ const viewModel = new MainViewModel();
 <style scoped>
 a {
   font-size: 4rem;
-  user-select: none;
 }
 
 button {
-  background-color: white;
-  color: black;
-  border-radius: 8px;
-  border: 2px solid gray;
-  padding: 4px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
