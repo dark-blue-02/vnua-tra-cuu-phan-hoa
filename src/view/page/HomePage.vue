@@ -2,26 +2,24 @@
 import MainViewModel from '@/viewmodel/MainViewModel';
 import flowerImg from "../../assets/svg/flower.svg";
 import { ResponseState } from '@/common/ResponseResult';
-import MaterialButton from '../components/MaterialButton.vue';
+import IconButton from '../components/IconButton.vue';
 
 const viewModel = new MainViewModel();
 
 </script>
 
 <template>
-  <div class="screen">
-    <div class="container">
-      <a>Header</a>
-      <MaterialButton btn-style="bg-blue-600" :icon-src=flowerImg :title="`Count: ${viewModel.count}`"
-        @on-click=viewModel.increment />
+  <div class="container">
+    <a>Header</a>
+    <IconButton btn-style="bg-blue-600" :icon-src=flowerImg :title="`Tra cứu: ${viewModel.count}`"
+      @on-click=viewModel.increment />
 
-      <button @click="viewModel.getWeaponList">Give me everything!</button>
+    <button @click="viewModel.getWeaponList">Give me everything!</button>
 
-      <p class="text-blue-900 border border-teal-600 rounded p-2"
-        v-if="viewModel.weaponList.state != ResponseState.LOADING">
-        Weapon list: <br>{{ viewModel.weaponList }}
-      </p>
-    </div>
+    <p class="text-blue-900 border border-teal-600 rounded p-2"
+      v-if="viewModel.weaponList.state != ResponseState.LOADING">
+      Weapon list: <br>{{ viewModel.weaponList }}
+    </p>
   </div>
 </template>
 
@@ -33,15 +31,6 @@ a {
 
 button {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.screen {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(135deg, rgb(194, 255, 200), rgb(255, 251, 200));
 }
 
 .container {
