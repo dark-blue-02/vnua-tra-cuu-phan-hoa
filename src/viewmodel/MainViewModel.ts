@@ -16,11 +16,9 @@ export default class MainViewModel {
     return this.#weaponList.value
   }
 
-  increment() {
-    this.#count.value++
-  }
+  increment = () => this.#count.value++
 
-  async getWeaponList() {
+  getWeaponList = async () => {
     await handleApiCall({
       ref: this.#weaponList,
       apiCall: () => this.#repository.getWeaponList()
