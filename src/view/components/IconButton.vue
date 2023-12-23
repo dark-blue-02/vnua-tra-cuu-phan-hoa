@@ -1,14 +1,18 @@
 <script setup lang="ts">
 
-defineProps({ iconSrc: String, title: String, btnStyle: String });
-defineEmits(['onClick']);
+defineProps<{
+  iconSrc: string,
+  title: string,
+  btnStyle: string,
+}>()
+defineEmits(['onClick'])
 
 </script>
 
 <template>
   <div>
     <button :class=btnStyle @click="$emit('onClick')">
-      <img :src=iconSrc>
+      <img :src=iconSrc alt=" ">
       <p>{{ title }}</p>
     </button>
 

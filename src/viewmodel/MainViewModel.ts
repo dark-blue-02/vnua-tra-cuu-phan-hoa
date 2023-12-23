@@ -1,5 +1,5 @@
-import { type ResponseResult, ResponseState, handleApiCall } from './../common/ResponseResult'
-import type Weapon from '@/model/model/Weapon'
+import { type ResponseResult, ResponseState, handleApiCall } from '@/common/ResponseResult'
+import type { Weapon } from '@/model/model/Weapon'
 import { weaponRepository } from '@/model/repo/WeaponRepository'
 import { ref, type Ref } from 'vue'
 

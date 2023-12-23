@@ -6,6 +6,7 @@ button {
   padding: 4px;
 }
 
-a {
+p, a {
   user-select: none;
+  font-family: Arial, serif;
 }
