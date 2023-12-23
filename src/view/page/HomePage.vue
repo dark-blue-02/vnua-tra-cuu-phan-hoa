@@ -4,13 +4,8 @@ import flowerImg from '../../assets/svg/flower.svg'
 import { ResponseState } from '@/common/ResponseResult'
 import IconButton from '../components/IconButton.vue'
 import DataTable from '@/view/components/DataTable.vue'
-import type { Company } from '@/model/model/Company'
 
 const viewModel = new MainViewModel()
-const fakeData: Array<Company> = [
-  { id: 1, name: 'Abc', contact: 'Maria Anders', country: 'Germany' },
-  { id: 2, name: 'Central', contact: 'Francisco Chang', country: 'Mexico' }
-]
 </script>
 
 <template>
@@ -23,11 +18,7 @@ const fakeData: Array<Company> = [
 
     <button @click="viewModel.getWeaponList">Give me everything!</button>
 
-    <p class="text-blue-900 border border-teal-600 rounded p-2"
-       v-if="viewModel.weaponList.state != ResponseState.LOADING">
-      Weapon list: <br>{{ viewModel.weaponList }}
-    </p>
-    <DataTable :data=fakeData />
+    <DataTable v-if="viewModel.weaponList.state != ResponseState.LOADING" :data=viewModel.weaponList.data />
   </div>
 </template>
 

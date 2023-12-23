@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { type Company } from '@/model/model/Company'
+import type { Weapon } from '@/model/model/Weapon'
 
 withDefaults(
-  defineProps<{ data: Array<Company> }>(),
-  { data: () => new Array<Company>() }
+  defineProps<{ data: Array<Weapon> }>(),
+  { data: () => new Array<Weapon>() }
 )
-const headers = ['Company', 'Contact', 'Country']
+const headers = ['No' ,'Name', 'Type', 'Attributes']
 </script>
 
 <template>
@@ -18,9 +18,10 @@ const headers = ['Company', 'Contact', 'Country']
 
     <template v-for="(item, index) in data.concat(data)" :key=index>
       <tr class="content hover:bg-green-300">
+        <td>{{ index }}</td>
         <td>{{ item.name }}</td>
-        <td>{{ item.contact }}</td>
-        <td>{{ item.country }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.attributes }}</td>
       </tr>
     </template>
   </table>
