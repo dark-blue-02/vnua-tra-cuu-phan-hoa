@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Weapon } from '@/model/model/Weapon'
+import StringUtils from '@/common/utils/StringUtils'
 
 withDefaults(
   defineProps<{ data: Array<Weapon> }>(),
@@ -18,10 +19,10 @@ const headers = ['No' ,'Name', 'Type', 'Attributes']
 
     <template v-for="(item, index) in data.concat(data)" :key=index>
       <tr class="content hover:bg-green-300">
-        <td>{{ index }}</td>
+        <td class="font-semibold">{{ index }}</td>
         <td>{{ item.name }}</td>
-        <td>{{ item.type }}</td>
-        <td>{{ item.attributes }}</td>
+        <td class="font-semibold">{{ StringUtils.capitalize(item.type) }}</td>
+        <td class="italic">{{ item.attributes ? item.attributes : 'NULL' }}</td>
       </tr>
     </template>
   </table>
@@ -37,7 +38,7 @@ tr {
     background: white;
 
     &:nth-child(odd) {
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.7);
     }
   }
 }

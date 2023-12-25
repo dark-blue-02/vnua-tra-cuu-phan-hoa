@@ -2,10 +2,13 @@
 import MainViewModel from '@/viewmodel/MainViewModel'
 import flowerImg from '../../assets/svg/flower.svg'
 import { ResponseState } from '@/common/ResponseResult'
-import IconButton from '../components/IconButton.vue'
-import DataTable from '@/view/components/DataTable.vue'
+import IconButton from '../components/button/IconButton.vue'
+import DataTable from '@/view/components/table/DataTable.vue'
+import { provide } from 'vue'
+import DiKeys from '@/common/DiKeys'
 
 const viewModel = new MainViewModel()
+provide(DiKeys.mainViewModel, viewModel)
 </script>
 
 <template>
