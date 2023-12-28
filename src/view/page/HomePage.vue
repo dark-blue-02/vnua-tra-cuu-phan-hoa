@@ -3,16 +3,13 @@ import MainViewModel from '@/viewmodel/MainViewModel'
 import flowerImg from '../../assets/svg/flower.svg'
 import { ResponseState } from '@/common/ResponseResult'
 import IconButton from '../components/button/IconButton.vue'
-import DataTable from '@/view/components/table/DataTable.vue'
 import { provide } from 'vue'
 import DiKeys from '@/common/DiKeys'
-import StringUtils from '@/common/utils/StringUtils'
-import DataRowCell from '@/view/components/table/DataRowCell.vue'
+import WeaponTable from '@/view/page/components/WeaponTable.vue'
 
 const viewModel = new MainViewModel()
 provide(DiKeys.mainViewModel, viewModel)
 
-const headers = ['No', 'Name', 'Type', 'Attributes']
 </script>
 
 <template>
@@ -25,16 +22,7 @@ const headers = ['No', 'Name', 'Type', 'Attributes']
 
     <button @click="viewModel.getWeaponList">Give me everything!</button>
 
-    <DataTable v-if="viewModel.weaponList.state == ResponseState.SUCCESS"
-               :headers="headers"
-               :data="viewModel.weaponList.data">
-      <template v-slot:default="{item, index}">
-        <DataRowCell class="font-semibold">{{ index }}</DataRowCell>
-        <DataRowCell>{{ item.name }}</DataRowCell>
-        <DataRowCell class="font-semibold">{{ StringUtils.capitalize(item.type) }}</DataRowCell>
-        <DataRowCell class="italic">{{ item.attributes ? item.attributes : 'NULL' }}</DataRowCell>
-      </template>
-    </DataTable>
+    <WeaponTable v-if="viewModel.weaponList.state == ResponseState.SUCCESS" />
     <p class="text-teal-600" v-else-if="viewModel.weaponList.state == ResponseState.ERROR">Something went wrong :(</p>
   </div>
 </template>
