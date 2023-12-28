@@ -6,9 +6,13 @@ import IconButton from '../components/button/IconButton.vue'
 import DataTable from '@/view/components/table/DataTable.vue'
 import { provide } from 'vue'
 import DiKeys from '@/common/DiKeys'
+import StringUtils from '@/common/utils/StringUtils'
+import DataRowCell from '@/view/components/table/DataRowCell.vue'
 
 const viewModel = new MainViewModel()
 provide(DiKeys.mainViewModel, viewModel)
+
+const headers = ['No', 'Name', 'Type', 'Attributes']
 </script>
 
 <template>
@@ -21,7 +25,17 @@ provide(DiKeys.mainViewModel, viewModel)
 
     <button @click="viewModel.getWeaponList">Give me everything!</button>
 
-    <DataTable v-if="viewModel.weaponList.state != ResponseState.LOADING" :data=viewModel.weaponList.data />
+    <DataTable v-if="viewModel.weaponList.state == ResponseState.SUCCESS"
+               :headers="headers"
+               :data="viewModel.weaponList.data">
+      <template v-slot:default="{item, index}">
+        <DataRowCell class="font-semibold">{{ index }}</DataRowCell>
+        <DataRowCell>{{ item.name }}</DataRowCell>
+        <DataRowCell class="font-semibold">{{ StringUtils.capitalize(item.type) }}</DataRowCell>
+        <DataRowCell class="italic">{{ item.attributes ? item.attributes : 'NULL' }}</DataRowCell>
+      </template>
+    </DataTable>
+    <p class="text-teal-600" v-else-if="viewModel.weaponList.state == ResponseState.ERROR">Something went wrong :(</p>
   </div>
 </template>
 
@@ -44,5 +58,11 @@ button {
   & > * {
     margin: 8px 0;
   }
+}
+
+td {
+  font-size: 12px;
+  padding: 1rem;
+  color: darkgreen;
 }
 </style>
